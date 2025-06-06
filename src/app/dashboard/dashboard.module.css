@@ -1,0 +1,16 @@
+.habitsTable {
+  display: grid;
+  grid-template-columns: 400px repeat(7, 80px);
+}
+
+.streakGrid {
+  display: grid;
+  grid-template-columns: repeat(30, 17px);
+  grid-template-rows: repeat(13, 17px);
+  gap: 8px;
+}
+
+.homeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
