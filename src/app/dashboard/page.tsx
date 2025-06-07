@@ -15,6 +15,7 @@ const nunito = Nunito({
 });
 
 export default function Dashboard() {
+  const habits = [];
   const checkboxes = Array(365).fill(
     <div className="w-full h-full bg-[#4ADE80] "></div>
   );
@@ -42,40 +43,55 @@ export default function Dashboard() {
             </button>
           </div>
 
-          <ul className=" grid grid-cols-[200px_repeat(7,70px)] gap-2 ">
-            <li className=" uppercase text-sm border-b border-[#DDD]">
+          <ul className=" grid grid-cols-[200px_repeat(7,70px)] ">
+            <li className=" uppercase text-sm border-b  border-[#DDD]">
               Habits
             </li>
             <li className=" uppercase text-sm text-[#222] border-b border-[#DDD] flex flex-col items-center">
               <h1>Sun</h1>
-              <h2>01</h2>
             </li>
             <li className=" uppercase text-sm text-[#222] border-b border-[#DDD] flex flex-col items-center">
               <h1>Mon</h1>
-              <h2>02</h2>
             </li>
             <li className=" uppercase text-sm text-[#222] border-b border-[#DDD] flex flex-col items-center">
               <h1>Tue</h1>
-              <h2>03</h2>
             </li>
             <li className=" uppercase text-sm text-[#222] border-b border-[#DDD] flex flex-col items-center">
               <h1>Wed</h1>
-              <h2>04</h2>
             </li>
             <li className=" uppercase text-sm text-[#222] border-b border-[#DDD] flex flex-col items-center">
               <h1>Thu</h1>
-              <h2>05</h2>
             </li>
             <li className=" uppercase text-sm text-[#222] border-b border-[#DDD] flex flex-col items-center">
               <h1>Fri</h1>
-              <h2>06</h2>
             </li>
             <li className=" uppercase text-sm text-[#222] border-b border-[#DDD] flex flex-col items-center">
               <h1>Sat</h1>
-              <h2>07</h2>
+            </li>
+            <li className="border-r border-[#DDD]"></li>
+            <li className=" uppercase text-sm text-[#222] flex flex-col items-center">
+              01
+            </li>
+            <li className=" uppercase text-sm text-[#222] flex flex-col items-center">
+              02
+            </li>
+            <li className=" uppercase text-sm text-[#222] flex flex-col items-center">
+              03
+            </li>
+            <li className=" uppercase text-sm text-[#222] flex flex-col items-center">
+              04
+            </li>
+            <li className=" uppercase text-sm text-[#222] flex flex-col items-center">
+              05
+            </li>
+            <li className=" uppercase text-sm text-[#222] flex flex-col items-center">
+              06
+            </li>
+            <li className=" uppercase text-sm text-[#222] flex flex-col items-center">
+              07
             </li>
           </ul>
-          <ul className="grid grid-cols-[200px_repeat(7,70px)] gap-2">
+          <ul className="grid grid-cols-[200px_repeat(7,70px)] grid-rows-[repeat(7,35px)] ]">
             <Habit />
             <Habit />
             <Habit />
@@ -84,15 +100,14 @@ export default function Dashboard() {
             <Habit />
             <Habit />
           </ul>
-          <div>Streak Grid</div>
-          <div className={`${styles.streakGrid} p-8 justify-center`}>
+          <div className={`${styles.streakGrid} pt-8 pb-1 justify-center`}>
             {checkboxes.map((checkbox, i) => (
               <div className="w-full h-full bg-[#4ADE80]" key={i}></div>
             ))}
           </div>
         </div>
         <Image
-          className=" w-[60%]"
+          className=" w-[30%] self-center mx-auto"
           src="/plant.png"
           alt="Plant"
           width={160}
