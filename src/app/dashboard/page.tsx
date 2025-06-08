@@ -1,8 +1,14 @@
+"use client";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { Nunito } from "next/font/google";
 import styles from "./dashboard.module.css";
+import habits from "@/data/habits";
 import Habit from "../../../components/habit";
+
+import NewHabit from "../../../components/NewHabit";
+import { useState } from "react";
+import CellBox from "../../../components/CellBox";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -15,12 +21,28 @@ const nunito = Nunito({
 });
 
 export default function Dashboard() {
-  const habits = [];
+  const dateRange = [
+    "2025-06-01",
+    "2025-06-02",
+    "2025-06-03",
+    "2025-06-04",
+    "2025-06-05",
+    "2025-06-06",
+    "2025-06-07",
+  ];
+  const [overlayVisible, setOverlayVisible] = useState(false);
+
   const checkboxes = Array(365).fill(
     <div className="w-full h-full bg-[#4ADE80] "></div>
   );
+
+  const handleShowOverlay = () => {
+    setOverlayVisible(!overlayVisible);
+  };
+
   return (
     <div className={`${inter.className} h-screen w-screen bg-[#99B3AA]`}>
+      {overlayVisible && <NewHabit handleShowOverlay={handleShowOverlay} />}
       <div className="flex justify-between w-full pt-3.5 pr-3.5">
         <Image
           src={"/profile.svg"}
@@ -30,7 +52,10 @@ export default function Dashboard() {
           className="w-16 h-16 rounded-full border-2 border-white shadow-md"
         />
         <div>
-          <button className=" uppercase rounded-3xl py-3 px-10 bg-[#FF3347] text-sm font-bold">
+          <button
+            onClick={handleShowOverlay}
+            className=" uppercase rounded-3xl py-3 px-10 bg-[#FF3347] text-sm font-bold"
+          >
             New Habit
           </button>
         </div>
@@ -92,17 +117,13 @@ export default function Dashboard() {
             </li>
           </ul>
           <ul className="grid grid-cols-[200px_repeat(7,70px)] grid-rows-[repeat(7,35px)] ]">
-            <Habit />
-            <Habit />
-            <Habit />
-            <Habit />
-            <Habit />
-            <Habit />
-            <Habit />
+            {habits.map((habit) => (
+              <Habit habit={habit} key={habit.id} dateRange={dateRange} />
+            ))}
           </ul>
           <div className={`${styles.streakGrid} pt-8 pb-1 justify-center`}>
             {checkboxes.map((checkbox, i) => (
-              <div className="w-full h-full bg-[#4ADE80]" key={i}></div>
+              <CellBox key={i} day={i} />
             ))}
           </div>
         </div>
