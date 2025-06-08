@@ -14,7 +14,6 @@ export default function Habit({
 }) {
   const { id, habitName: habitName, completion } = habit;
 
-
   const completeStyle = {
     backgroundColor: "#4ADE80",
   };
@@ -51,7 +50,7 @@ export default function Habit({
         key={date}
         className={`${styles.gridDot}  border-b border-[#DDD] flex justify-center items-center`}
       >
-        <CheckButton habit={habit} dateIndex={dateIndex}/>
+        <CheckButton habit={habit} dateIndex={dateIndex} />
       </div>
     );
   });

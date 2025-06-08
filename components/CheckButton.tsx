@@ -16,8 +16,6 @@ export default function CheckButton({
   const [status, setStatus] = useState(
     habit.completion[dateIndex]?.status || "pending"
   );
-  console.log("status", status);
-
   const handleButtonClick = (habitId: string, dateIndex: number) => {
     const i = habits.findIndex((habit) => habit.id === habitId);
     if (status === "pending") {

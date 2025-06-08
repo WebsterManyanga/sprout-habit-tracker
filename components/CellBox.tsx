@@ -8,7 +8,6 @@ export default function CellBox({ day }: { day: number }) {
     const dateIndex = habit.completion.findIndex((record) => {
       return record.date === dateHeld.toISOString().split("T")[0];
     });
-    console.log("dateIndex", dateIndex);
 
     if (habit.completion[dateIndex]?.status === "complete") {
       collector.push(1);
