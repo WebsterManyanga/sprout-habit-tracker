@@ -18,13 +18,20 @@ export default function CheckButton({
   );
   const handleButtonClick = (habitId: string, dateIndex: number) => {
     const i = habits.findIndex((habit) => habit.id === habitId);
+    let newStatus: "pending" | "complete" | "rejected" = "pending";
     if (status === "pending") {
-      setStatus("complete");
+      newStatus = "complete";
     } else if (status === "complete") {
-      setStatus("rejected");
+      newStatus = "rejected";
     } else {
-      setStatus("pending");
+      newStatus = "pending";
     }
+
+
+
+    
+    //habits[i].completion[dateIndex].status = newStatus;
+    setStatus(newStatus);
   };
 
   const completeStyle = {
